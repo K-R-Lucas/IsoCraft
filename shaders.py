@@ -1,5 +1,4 @@
 from settings import *
-from Global.Path import FRAGMENT_SHADER, VERTEX_SHADER
 
 class ShaderProgram:
     def __init__(self, app):
