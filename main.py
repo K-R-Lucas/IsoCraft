@@ -8,15 +8,14 @@ import sys
 class IsoCraft:
     def __init__(self):
         pg.init()
-        pg.display.gl_set_attribute(pg.GL_CONTEXT_MAJOR_VERSION, 3)
+        pg.display.gl_set_attribute(pg.GL_CONTEXT_MAJOR_VERSION, 4)
         pg.display.gl_set_attribute(pg.GL_CONTEXT_MINOR_VERSION, 3)
         pg.display.gl_set_attribute(pg.GL_CONTEXT_PROFILE_MASK, pg.GL_CONTEXT_PROFILE_CORE)
-        pg.display.gl_set_attribute(pg.GL_DEPTH_SIZE, 24)
         
         pg.display.set_mode(WINDOW_RES, pg.OPENGL | pg.DOUBLEBUF | pg.RESIZABLE)
         self.ctx = mgl.create_context()
 
-        self.ctx.enable(mgl.DEPTH_TEST | mgl.CULL_FACE | mgl.BLEND)
+        self.ctx.enable(mgl.CULL_FACE | mgl.BLEND)
         self.ctx.gc_mode = "auto"
         self.mouse_cap = False
 
