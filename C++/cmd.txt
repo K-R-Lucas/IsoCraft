@@ -1,1 +1,0 @@
-g++ -v -g -std=c++23 -O3 -Wall -o "IsoCraft.exe" "Program.cpp" -I "include" -I "C:\msys64\ucrt64\include"
