@@ -1,9 +1,9 @@
 #include "Renderer.hpp"
 
-Renderer::Renderer(Application& _app): m_app(_app)
+Renderer::Renderer(Application* _app): m_app(_app)
 {
     glfwInit();
-    m_window = glfwCreateWindow(m_app.GetWidth(), m_app.GetHeight(), "IsoCraft++", NULL, NULL);
+    m_window = glfwCreateWindow(m_app->GetWidth(), m_app->GetHeight(), "IsoCraft++", NULL, NULL);
     glfwMakeContextCurrent(m_window);
 
 }

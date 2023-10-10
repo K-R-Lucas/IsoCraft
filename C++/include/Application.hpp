@@ -1,4 +1,7 @@
 #pragma once
+
+class Application;
+
 #include "Renderer.hpp"
 #include "Timer.hpp"
 
@@ -8,7 +11,7 @@ public:
     Application(int _width, int _height, int _target_tps, int _target_fps);
     ~Application();
 
-    void Run();
+    int Run();
     void Update();
     void Tick();
 

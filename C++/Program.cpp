@@ -1,9 +1,8 @@
 #include "Application.hpp"
+#include <iostream>
 
 int main()
 {
-    Application app;
-    app.Run();
-
-    return 0;
+    Application app{1280, 720, 165, 165};
+    return app.Run();
 }

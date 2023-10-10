@@ -5,7 +5,7 @@
 Application::Application(int _width, int _height, int _target_tps, int _target_fps):
     m_tps(_target_tps), m_width(_width), m_height(_height), m_dt(1.0f/static_cast<float>(_target_fps)), m_debug_timer(4), m_main_timer(60)
 {
-
+    m_renderer = new Renderer{this};
 }
 
 Application::~Application()
@@ -13,7 +13,7 @@ Application::~Application()
 
 }
 
-void Application::Run()
+int Application::Run()
 {
     GLFWwindow* window = m_renderer->GetWindow();
 
