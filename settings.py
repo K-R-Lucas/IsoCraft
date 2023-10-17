@@ -9,6 +9,7 @@ DEF_BG_COLOUR = vec4(51/255, 51/255, 51/255, 1.0)
 CWD = os.getcwd()
 FRAGMENT_SHADER = os.path.join(CWD, "shaders", "{}.frag")
 VERTEX_SHADER = os.path.join(CWD, "shaders", "{}.vert")
+BLOCK_TEXTURE = os.path.join(CWD, "assets", "textures", "blocks", "{}.png")
 
 # Chunk stuff
 CHUNK_HEIGHT = 32

@@ -1,9 +1,16 @@
-#version 430 core
+#version 460 core
 
 layout (location = 0) out vec4 fragColour;
 
-in vec3 block_colour;
+const vec3 gamma = vec3(2.2);
+const vec3 inv_gamma = 1 / gamma;
+
+uniform sampler2D u_texture_0;
+
+in vec2 uv;
 
 void main() {
-    fragColour = vec4(block_colour, 1);
+    vec4 tex_col = texture(u_texture_0, uv).rgba;
+    
+    fragColour = tex_col;
 }

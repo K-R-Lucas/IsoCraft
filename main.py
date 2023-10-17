@@ -3,13 +3,14 @@ from Utils.Timing import Timer
 from shaders import ShaderProgram
 from scene import Scene
 from player import Player
+from textures import Textures
 import sys
 
 class IsoCraft:
     def __init__(self):
         pg.init()
         pg.display.gl_set_attribute(pg.GL_CONTEXT_MAJOR_VERSION, 4)
-        pg.display.gl_set_attribute(pg.GL_CONTEXT_MINOR_VERSION, 3)
+        pg.display.gl_set_attribute(pg.GL_CONTEXT_MINOR_VERSION, 6)
         pg.display.gl_set_attribute(pg.GL_CONTEXT_PROFILE_MASK, pg.GL_CONTEXT_PROFILE_CORE)
         
         pg.display.set_mode(WINDOW_RES, pg.OPENGL | pg.DOUBLEBUF | pg.RESIZABLE)
@@ -32,6 +33,7 @@ class IsoCraft:
         self.re_init()
     
     def re_init(self):
+        self.textures = Textures(self)
         self.player = Player(self)
         self.shaders = ShaderProgram(self)
         self.scene = Scene(self)

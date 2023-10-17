@@ -5,10 +5,16 @@ from world_objects.chunk import Chunk
 class Scene:
     def __init__(self, app):
         self.app = app
-        self.chunk = Chunk(self.app)
+        self.chunks = []
+
+        for i in range(1):
+            self.chunks.append(
+                Chunk(self.app)
+            )
 
     def update(self):
         pass
 
     def render(self):
-        self.chunk.render()
+        for chunk in self.chunks:
+            chunk.render()

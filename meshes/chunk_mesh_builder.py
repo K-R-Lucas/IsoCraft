@@ -37,7 +37,7 @@ def buildChunkMesh(chunk_blocks, format_size):
             for x in range(CHUNK_WIDTH):
                 block_id = chunk_blocks[x + y*CHUNK_WIDTH + z*CHUNK_AREA]
                 X = c30 * (x + z)
-                Y = y + s30 * (x - z)
+                Y = (y + s30 * (x - z))
                 Z = 0
 
                 if block_id == 0:
@@ -45,29 +45,29 @@ def buildChunkMesh(chunk_blocks, format_size):
 
                 # Top Face
                 if is_void((x, y+1, z), chunk_blocks):
-                    v0 = (X, Y, Z, block_id, 0)
-                    v1 = (X + c30, Y + s30, Z, block_id, 0)
-                    v2 = (X, Y + r, Z, block_id, 0)
-                    v3 = (X + c150, Y + s150, Z, block_id, 0)
+                    v0 = (X, Y, Z, block_id)
+                    v1 = (X + c30, Y + s30, Z, block_id)
+                    v2 = (X, Y + r, Z, block_id)
+                    v3 = (X + c150, Y + s150, Z, block_id)
 
-                    index = addVertexData(vertex_data, index, v0, v1, v2, v0, v2, v3)
+                    index = addVertexData(vertex_data, index, (*v0, 0), (*v1, 0), (*v2, 0), (*v0, 0), (*v2, 0), (*v3, 0))
                 
                 # Side Face
                 if is_void((x-1, y, z), chunk_blocks):
-                    v0 = (X, Y, Z, block_id, 1)
-                    v1 = (X + c150, Y + s150, Z, block_id, 1)
-                    v2 = (X + c210, Y + s210, Z, block_id, 1)
-                    v3 = (X, Y - r, Z, block_id, 1)
+                    v0 = (X, Y, Z, block_id)
+                    v1 = (X + c150, Y + s150, Z, block_id)
+                    v2 = (X + c210, Y + s210, Z, block_id)
+                    v3 = (X, Y - r, Z, block_id)
 
-                    index = addVertexData(vertex_data, index, v0, v1, v2, v0, v2, v3)
+                    index = addVertexData(vertex_data, index, (*v0, 1), (*v1, 1), (*v2, 1), (*v0, 1), (*v2, 1), (*v3, 1))
                 
                 # Front Face
                 if is_void((x, y, z+1), chunk_blocks):
-                    v0 = (X, Y, Z, block_id, 2)
-                    v1 = (X, Y - r, Z, block_id, 2)
-                    v2 = (X + c330, Y + s330, Z, block_id, 2)
-                    v3 = (X + c30, Y + s30, Z, block_id, 2)
+                    v0 = (X, Y, Z, block_id)
+                    v1 = (X, Y - r, Z, block_id)
+                    v2 = (X + c330, Y + s330, Z, block_id)
+                    v3 = (X + c30, Y + s30, Z, block_id)
 
-                    index = addVertexData(vertex_data, index, v0, v1, v2, v0, v2, v3)
+                    index = addVertexData(vertex_data, index, (*v0, 2), (*v1, 2), (*v2, 2), (*v0, 2), (*v2, 2), (*v3, 2))
     
     return vertex_data[:(index + 1)]
