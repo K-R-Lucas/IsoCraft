@@ -1,5 +1,6 @@
 from settings import *
 from meshes.chunk_mesh import ChunkMesh
+from random import randint
 
 class Chunk:
     def __init__(self, app):
@@ -20,6 +21,6 @@ class Chunk:
         for z in range(CHUNK_DEPTH):
             for y in range(CHUNK_HEIGHT):
                 for x in range(CHUNK_WIDTH):
-                    blocks[x + y*CHUNK_WIDTH + z*CHUNK_AREA] = 1
+                    blocks[x + y*CHUNK_WIDTH + z*CHUNK_AREA] = randint(0, 1)
         
         return blocks

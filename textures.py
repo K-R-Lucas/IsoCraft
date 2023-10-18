@@ -5,7 +5,7 @@ class Textures:
         self.app = app
         self.ctx = app.ctx
 
-        self.tex_0 = self.load("dirt")
+        self.tex_0 = self.load("Test")
         self.tex_0.use(location = 0)
 
         self.tex_1 = self.load("grass")
