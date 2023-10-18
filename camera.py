@@ -10,7 +10,7 @@ class Camera:
         self.right = vec3(1, 0, 0)
         self.forward = vec3(0, 0, -1)
 
-        # self.m_proj = glm.ortho(0, 10, 0, 10, NEAR, FAR)
+        # self.m_proj = glm.ortho(0, 100, 0, 100, NEAR, FAR)
         self.m_proj = glm.perspective(V_FOV, ASPECT_RATIO, NEAR, FAR)
         self.m_view = glm.mat4()
     

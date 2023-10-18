@@ -32,12 +32,12 @@ def buildChunkMesh(chunk_blocks, format_size):
     vertex_data = np.empty(CHUNK_VOLUME * 18 * format_size, dtype="f")
     index = 0
 
-    for y in range(CHUNK_HEIGHT):
-        for z in range(CHUNK_DEPTH):
+    for z in range(CHUNK_DEPTH):
+        for y in range(CHUNK_HEIGHT):
             for x in range(CHUNK_WIDTH):
-                block_id = chunk_blocks[x + z*CHUNK_WIDTH + y*CHUNK_AREA]
+                block_id = chunk_blocks[x + y*CHUNK_WIDTH + z*CHUNK_AREA]
                 X = c30 * (x + z)
-                Y = (y + s30 * (x - z))
+                Y = y + s30 * (x - z)
                 Z = 0
 
                 if block_id == -1:

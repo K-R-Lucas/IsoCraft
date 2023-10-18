@@ -11,6 +11,13 @@ FRAGMENT_SHADER = os.path.join(CWD, "shaders", "{}.frag")
 VERTEX_SHADER = os.path.join(CWD, "shaders", "{}.vert")
 BLOCK_TEXTURE = os.path.join(CWD, "assets", "textures", "blocks", "{}.png")
 
+# World stuff
+WORLD_WIDTH = 2
+WORLD_HEIGHT = 1
+WORLD_DEPTH = 2
+WORLD_AREA = WORLD_WIDTH * WORLD_HEIGHT
+WORLD_VOLUME = WORLD_WIDTH * WORLD_HEIGHT * WORLD_DEPTH
+
 # Chunk stuff
 CHUNK_HEIGHT = 32
 CHUNK_WIDTH = 32
