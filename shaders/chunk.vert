@@ -16,6 +16,7 @@ uniform mat4 m_model;
 
 out vec2 uv;
 out int out_face_id;
+out float out_block_id;
 
 const vec2 uv_coords[8] = vec2[8](
     vec2(0, 0), vec2(X, 0), vec2(X2, 0), vec2(1, 0),
@@ -32,6 +33,7 @@ void main() {
     int uv_index = int(gl_VertexID % 6 + face_id * 6);
     uv = uv_coords[uv_indices[uv_index]];
     out_face_id = int(face_id);
+    out_block_id = block_id;
 
     gl_Position = m_proj * m_view * m_model * vec4(in_position, 1.0);
 }

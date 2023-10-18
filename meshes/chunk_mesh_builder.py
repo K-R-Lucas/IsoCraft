@@ -15,7 +15,7 @@ def is_void(block_pos, chunk_blocks):
     x, y, z = block_pos
 
     if (x >= 0 and x < CHUNK_WIDTH) and (y >= 0 and y < CHUNK_HEIGHT) and (z >= 0 and z < CHUNK_DEPTH):
-        if chunk_blocks[x + y*CHUNK_WIDTH + z*CHUNK_AREA] > 0:
+        if chunk_blocks[x + z*CHUNK_WIDTH + y*CHUNK_AREA] > -1:
             return False
     
     return True
@@ -32,19 +32,19 @@ def buildChunkMesh(chunk_blocks, format_size):
     vertex_data = np.empty(CHUNK_VOLUME * 18 * format_size, dtype="f")
     index = 0
 
-    for z in range(CHUNK_DEPTH):
-        for y in range(CHUNK_HEIGHT):
+    for y in range(CHUNK_HEIGHT):
+        for z in range(CHUNK_DEPTH):
             for x in range(CHUNK_WIDTH):
-                block_id = chunk_blocks[x + y*CHUNK_WIDTH + z*CHUNK_AREA]
+                block_id = chunk_blocks[x + z*CHUNK_WIDTH + y*CHUNK_AREA]
                 X = c30 * (x + z)
                 Y = (y + s30 * (x - z))
                 Z = 0
 
-                if block_id == 0:
+                if block_id == -1:
                     continue
 
                 # Top Face
-                if is_void((x, y+1, z), chunk_blocks):
+                if True: # is_void((x, y+1, z), chunk_blocks):
                     v0 = (X, Y, Z, block_id)
                     v1 = (X + c30, Y + s30, Z, block_id)
                     v2 = (X, Y + r, Z, block_id)
@@ -53,7 +53,7 @@ def buildChunkMesh(chunk_blocks, format_size):
                     index = addVertexData(vertex_data, index, (*v0, 0), (*v1, 0), (*v2, 0), (*v0, 0), (*v2, 0), (*v3, 0))
                 
                 # Side Face
-                if is_void((x-1, y, z), chunk_blocks):
+                if True: # is_void((x+1, y, z), chunk_blocks):
                     v0 = (X, Y, Z, block_id)
                     v1 = (X + c150, Y + s150, Z, block_id)
                     v2 = (X + c210, Y + s210, Z, block_id)
@@ -62,7 +62,7 @@ def buildChunkMesh(chunk_blocks, format_size):
                     index = addVertexData(vertex_data, index, (*v0, 1), (*v1, 1), (*v2, 1), (*v0, 1), (*v2, 1), (*v3, 1))
                 
                 # Front Face
-                if is_void((x, y, z+1), chunk_blocks):
+                if True: # is_void((x, y, z-1), chunk_blocks):
                     v0 = (X, Y, Z, block_id)
                     v1 = (X, Y - r, Z, block_id)
                     v2 = (X + c330, Y + s330, Z, block_id)
